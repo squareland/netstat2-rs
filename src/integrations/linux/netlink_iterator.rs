@@ -1,11 +1,11 @@
 use crate::integrations::linux::ffi::*;
 use crate::types::error::*;
 use crate::types::*;
-use libc::*;
 use std;
 use std::io;
 use std::mem::size_of;
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
+use libc::{c_void, __u32, __u8, AF_NETLINK, c_int, c_uint, close, iovec, msghdr, NETLINK_INET_DIAG, NLM_F_DUMP, NLM_F_REQUEST, NLMSG_DONE, NLMSG_ERROR, nlmsghdr, recv, sa_family_t, sendmsg, size_t, SOCK_DGRAM, sockaddr_nl, socket};
 
 #[cfg(target_env = "musl")]
 #[repr(C)]
